@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela FIPE 2021 Prediction Prices</title>
+</head>
+
+<body>
+    <div style="color:black">
+        <form action="{{ url_for('predict')}}" method="post">
+            <h2>Previsão de preço dos Carros da tabela FIPE 2021</h2>
+            <h3>Ano</h3><br><input id="first" name="Ano" required="required">
+            <h3>Qual é o tipo de combustível?(Gasolina, Diesel ou Álcool)</h3><br><select id="fuel" name="Combustivel" required="required">
+                <option value="Diesel">Diesel</option>
+                <option value="Gasolina">Gasolina</option>
+                <option value="Álcool">Álcool</option>
+            </select>
+            <h3>O Carro é Automático ou Manual?</h3><br><select name="Cambio" id="cambio" required="required">
+                <option value="Manual">Manual</option>
+                <option value="Automatico">Automatico</option>
+            </select>
+            <h3>Qual a classe do carro?</h3><br><select id="fourth" name="Classe_carro" required="required">
+                <option value="1">Popular, abaixo de 30 mil</option>
+                <option value="2">Intermediário, até 80 mil</option>
+                <option value="3">Top de linha, até 200 mil</option>
+                <option value="4">Super carros, acima de 201 mil</option>
+            </select>
+            <h3>Qual a marca do carro?Digite o código correspondente. (Consulte a tabela abaixo)</h3><br><input name="Marca" id="marca" required="required">
+
+
+
+            <br><br><button id="sub" type="submit ">Calcular o valor</button>
+            <br>
+
+
+        </form>
+
+
+
+        <br><br><h3>{{ prediction_text }}<h3>
+    </div>
+
+        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Brand_code</th>
+    </tr>
+    <tr>
+      <th>Marca</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AM Gen</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>ASTON MARTIN</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Acura</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Agrale</th>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Alfa Romeo</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Asia Motors</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>Audi</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>BMW</th>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>BRM</th>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>Baby</th>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>Bugre</th>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>CBT Jipe</th>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>CHANA</th>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>CHANGAN</th>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>Cadillac</th>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>Caoa Chery</th>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>Chrysler</th>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>Citroën</th>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>Cross Lander</th>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>Daewoo</th>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>Daihatsu</th>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>Dodge</th>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>EFFA</th>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>Engesa</th>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>Envemo</th>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>FOTON</th>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>Ferrari</th>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>Fiat</th>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>Fibravan</th>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>Ford</th>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>Fyber</th>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>GEELY</th>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th>GM - Chevrolet</th>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>GREAT WALL</th>
+      <td>33</td>
+    </tr>
+    <tr>
+      <th>Gurgel</th>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>HAFEI</th>
+      <td>35</td>
+    </tr>
+    <tr>
+      <th>HITECH ELECTRIC</th>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>Honda</th>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>Hyundai</th>
+      <td>38</td>
+    </tr>
+    <tr>
+      <th>IVECO</th>
+      <td>39</td>
+    </tr>
+    <tr>
+      <th>Isuzu</th>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>JAC</th>
+      <td>41</td>
+    </tr>
+    <tr>
+      <th>JINBEI</th>
+      <td>42</td>
+    </tr>
+    <tr>
+      <th>JPX</th>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th>Jaguar</th>
+      <td>44</td>
+    </tr>
+    <tr>
+      <th>Jeep</th>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>Kia Motors</th>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>LAMBORGHINI</th>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>LIFAN</th>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>LOBINI</th>
+      <td>49</td>
+    </tr>
+    <tr>
+      <th>Lada</th>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>Land Rover</th>
+      <td>51</td>
+    </tr>
+    <tr>
+      <th>Lexus</th>
+      <td>52</td>
+    </tr>
+    <tr>
+      <th>Lotus</th>
+      <td>53</td>
+    </tr>
+    <tr>
+      <th>MG</th>
+      <td>54</td>
+    </tr>
+    <tr>
+      <th>MINI</th>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>Mahindra</th>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>Maserati</th>
+      <td>57</td>
+    </tr>
+    <tr>
+      <th>Matra</th>
+      <td>58</td>
+    </tr>
+    <tr>
+      <th>Mazda</th>
+      <td>59</td>
+    </tr>
+    <tr>
+      <th>Mclaren</th>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>Mercedes-Benz</th>
+      <td>61</td>
+    </tr>
+    <tr>
+      <th>Mercury</th>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>Mitsubishi</th>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>Miura</th>
+      <td>64</td>
+    </tr>
+    <tr>
+      <th>Nissan</th>
+      <td>65</td>
+    </tr>
+    <tr>
+      <th>Peugeot</th>
+      <td>66</td>
+    </tr>
+    <tr>
+      <th>Plymouth</th>
+      <td>67</td>
+    </tr>
+    <tr>
+      <th>Pontiac</th>
+      <td>68</td>
+    </tr>
+    <tr>
+      <th>Porsche</th>
+      <td>69</td>
+    </tr>
+    <tr>
+      <th>RAM</th>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>RELY</th>
+      <td>71</td>
+    </tr>
+    <tr>
+      <th>Renault</th>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>Rolls-Royce</th>
+      <td>73</td>
+    </tr>
+    <tr>
+      <th>Rover</th>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>SHINERAY</th>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>SSANGYONG</th>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>Saab</th>
+      <td>77</td>
+    </tr>
+    <tr>
+      <th>Saturn</th>
+      <td>78</td>
+    </tr>
+    <tr>
+      <th>Seat</th>
+      <td>79</td>
+    </tr>
+    <tr>
+      <th>Subaru</th>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>Suzuki</th>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>TAC</th>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>Toyota</th>
+      <td>83</td>
+    </tr>
+    <tr>
+      <th>Troller</th>
+      <td>84</td>
+    </tr>
+    <tr>
+      <th>VW - VolksWagen</th>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>Volvo</th>
+      <td>86</td>
+    </tr>
+    <tr>
+      <th>Wake</th>
+      <td>87</td>
+    </tr>
+    <tr>
+      <th>Walk</th>
+      <td>88</td>
+    </tr>
+    <tr>
+      <th>smart</th>
+      <td>89</td>
+    </tr>
+  </tbody>
+</table>
+
+
+    <style>
+        body {
+            background-color: lightgray;
+            text-align: center;
+            padding: 0px;
+        }
+        
+        #research {
+            font-size: 18px;
+            width: 100px;
+            height: 23px;
+            top: 23px;
+        }
+        
+        #box {
+            border-radius: 60px;
+            border-color: 45px;
+            border-style: solid;
+            font-family: cursive;
+            text-align: center;
+            background-color: rgb(168, 131, 61);
+            font-size: medium;
+            position: absolute;
+            width: 700px;
+            bottom: 9%;
+            height: 850px;
+            right: 30%;
+            padding: 0px;
+            margin: 0px;
+            font-size: 14px;
+        }
+        
+        #fuel {
+            width: 83px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+        }
+        
+        #fuel:hover {
+            background-color: coral;
+        }
+        
+        #research {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #research:hover {
+            background-color: coral;
+        }
+        
+        #resea {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #resea:hover {
+            background-color: coral;
+        }
+        
+        #sub {
+            width: 120px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #sub:hover {
+            background-color: darkcyan;
+        }
+        
+        #first {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #second {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #third {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #fourth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</body>
+
+</html>
