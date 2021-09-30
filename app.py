@@ -60,8 +60,8 @@ def predict():
 
         prediction= model.predict([[Ano,tipo_combustivel, Cambio, Classe_carro, Marca]])
         output=round(prediction[0],2)
-        if output<0:
-            return render_template('index.html',prediction_texts="Sorry you cannot sell this car")
+        if output<=0:
+            return render_template('index.html',prediction_texts="Valor inválido!")
         else:
             return render_template('index.html',prediction_text="O valor do seu carro é {}".format(output))
     else:
